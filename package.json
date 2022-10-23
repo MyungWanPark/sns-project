@@ -1,0 +1,19 @@
+{
+  "name": "sns-project",
+  "version": "0.0.1",
+  "description": "sns project using Node.js Express.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyungWanPark/sns-project.git"
+  },
+  "author": "myungwan park",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MyungWanPark/sns-project/issues"
+  },
+  "homepage": "https://github.com/MyungWanPark/sns-project#readme"
+}
