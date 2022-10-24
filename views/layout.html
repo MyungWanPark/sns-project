@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-wrap">
+            <div class="profile">
+                {% if user and user.id %}
+                    <div class="user-name">{{'안녕하세요!' + user.nick + '님'}}</div>
+                    <div class="half">
+                        <div>팔로잉</div>
+                        <div class="count following-count">{{followingCount}}</div>
+                    </div>
+                    <div class="half">
+                        <div>팔로워</div>
+                        <div class="count follower-count">{{followerCount}}</div>
+                    </div>
+                    <input id="my-id" type="hidden" value="{{user.id}}">
+                    <a href="/profile" id="my-profile" class="btn">내 프로필</a>
+                    <a href="/auth/logout" id="logout" class="btn">로그아웃</a>
+                {{% else %}}
+                    <form action="/auth/login" id="login-form" method="post">
+                        <div class="input-group">
+                            <label for="email">이메일</label>
+                            <input type="email" id="email" name="email" required autofocus>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">비밀번호</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <a href="/join" id="join" class="btn">회원가입</a>
+                        <a href="/auth/kakako" id="kakao" class="btn">카카오톡</a>
+                    </form>
+                {{% endif %}}
+            </div>
+            <footer>
+                Made by&nbsp;
+                <a href="https://github.com/MyungWanPark/" target="_blank">MyungWanPark</a>
+            </footer>
+        </div>
+        {{% block content %}}
+        {{% endblock %}}
+    </div>
+    <script>
+        const axios = require('axios');
+        window.onload = () => {
+            if(new URL(location.href).searchParams.get('loginError')) {
+                alert(new URL(location.href).searchParams.get('loginError'));
+            }
+        };
+    </script>
+    {{% block script %}}
+    {{% endblock %}}
+</body>
+</html>
