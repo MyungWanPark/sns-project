@@ -24,7 +24,7 @@
                     <input id="my-id" type="hidden" value="{{user.id}}">
                     <a href="/profile" id="my-profile" class="btn">내 프로필</a>
                     <a href="/auth/logout" id="logout" class="btn">로그아웃</a>
-                {{% else %}}
+                {% else %}
                     <form action="/auth/login" id="login-form" method="post">
                         <div class="input-group">
                             <label for="email">이메일</label>
@@ -37,15 +37,15 @@
                         <a href="/join" id="join" class="btn">회원가입</a>
                         <a href="/auth/kakako" id="kakao" class="btn">카카오톡</a>
                     </form>
-                {{% endif %}}
+                {% endif %}
             </div>
             <footer>
                 Made by&nbsp;
                 <a href="https://github.com/MyungWanPark/" target="_blank">MyungWanPark</a>
             </footer>
         </div>
-        {{% block content %}}
-        {{% endblock %}}
+        {% block content %}
+        {% endblock %}
     </div>
     <script>
         const axios = require('axios');
@@ -55,7 +55,7 @@
             }
         };
     </script>
-    {{% block script %}}
-    {{% endblock %}}
+    {% block script %}
+    {% endblock %}
 </body>
 </html>

@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    hello
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="timeline">
+        {% if user %}
+            <div>
+                <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <textarea name="content" id="twit" maxlength="140"></textarea>
+                    </div>
+                    <div class="img-preview">
+                        <img src="" alt="미리보기" id="img-preview" style="display: none;" width="250">
+                        <input type="hidden" id="img-url" name="url">
+                    </div>
+                    <div>
+                        <label for="img" id="img-label">사진 업로드</label>
+                        <input type="file" id="img" accept="image/*">
+                        <button id="twit-btn" type="submit" class="btn">짹짹</button>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    </div>
