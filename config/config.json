@@ -2,10 +2,11 @@
   "development": {
     "username": "root",
     "password": "8858",
-    "database": "nodebird-sns",
+    "database": "sns_project",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
+
   "test": {
     "username": "root",
     "password": null,
