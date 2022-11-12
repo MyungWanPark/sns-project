@@ -1,4 +1,4 @@
-exports.isLoggedIn = (req, res, next) => {
+const isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
         next();
     } else {
@@ -6,7 +6,7 @@ exports.isLoggedIn = (req, res, next) => {
     }
 };
 
-exports.isNotLoggedIn = (req, res, next) => {
+const isNotLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         next();
     } else {
@@ -14,3 +14,5 @@ exports.isNotLoggedIn = (req, res, next) => {
         res.redirect(`/?error=${message}`);
     }
 };
+
+module.exports = { isLoggedIn, isNotLoggedIn };
