@@ -30,7 +30,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     
     passport.authenticate('local', (authError, user, info) => {
         if (authError) {
-            console.error('authError = ', authError);
+            console.error(authError);
             return next(authError);
         }
         if (!user) {
@@ -38,7 +38,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
         }
         return req.login(user, (loginError) => {
             if (loginError) {
-                console.error('loginError = ', loginError);
+                console.error(loginError);
                 return next(loginError);
             }
             return res.redirect('/');
@@ -46,11 +46,12 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     })(req, res, next);
 });
 
-router.get('/logout', isLoggedIn, (req, res) => {
-    req.logout();
-    req.session.destroy();
-    res.redirect('/');
-})
+router.get('/logout', isLoggedIn, (req, res, next) => {
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
+});
 
 router.get('/kakao', passport.authenticate('kakao'));
 
